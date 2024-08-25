@@ -15,7 +15,13 @@ URI = "mongodb+srv://ravitejasalva:Ravi%40198@cluster0.crsvy.mongodb.net/?retryW
 dotEnv.config();
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(
+    cors({
+      origin: "https://custom-reports-beta.vercel.app",
+      methods: ["GET", "POST", "PUT", "DELETE"],
+      credentials: true,
+    })
+);
 
 mongoose.connect(URI)
 .then(() => {
